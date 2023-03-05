@@ -123,56 +123,63 @@ class _SlidesScreenState extends State<SlidesScreen> {
                             color: Colors.blue,
                             child: Padding(
                               padding: const EdgeInsets.all(0),
-                              child:
-                              Row(
+                              child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(20),
-                                    child: Text(name,
-                                      style: const TextStyle(fontWeight: FontWeight.bold,
-                                          fontSize: 20,
-                                          color: Colors.white),
+                                  Container(
+                                    child: Row(
+                                      children: [
+                                        SizedBox(width: 8,),
+                                        Icon(Icons.picture_as_pdf, size: 50,),
+                                        Padding(
+                                          padding: const EdgeInsets.all(20),
+                                          child: Text(name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                  SizedBox(
+                                  Container(
                                     height: 100,
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Row(
-                                            children: [
-                                              Container(width: 50,),
-                                              InkWell(
-                                                  onTap: (){
-                                                    query.child(id).child(time).remove();
-                                                  },
-                                                  child: const Icon(Icons.highlight_remove_rounded, color: Colors.white,size: 35)),
-                                            ]),
-                                        Row(
                                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                           children: [
-                                            InkWell(
-                                                onTap: (){
-                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDf(path: path, name: name),));
-                                                },
-                                                child: const Icon(Icons.remove_red_eye, color: Colors.white, size: 30,)),
-                                            const SizedBox(width: 20,),
-                                            InkWell(
-                                                onTap: (){
-                                                  downloadFile(path, name);
-                                                },
-                                                child: const Icon(Icons.download, color: Colors.white, size: 30))
+                                            Container(
+                                              width: 2,
+                                              height: 100,
+                                              color: Colors.white,
+                                            ),
+
+                                            Container(
+                                              height: 100,
+                                              width: 80,
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                children: [
+                                                  InkWell(
+                                                      onTap: (){
+                                                        Navigator.push(context, MaterialPageRoute(builder: (context) => PDf(path: path, name: name),));
+                                                      },
+                                                      child: Icon(Icons.remove_red_eye, color: Colors.white, size: 30,)),
+                                                  InkWell(
+                                                      onTap: (){
+                                                        downloadFile(path, name);
+                                                      },
+                                                      child: Icon(Icons.download, color: Colors.white, size: 30))
+                                                ],
+                                              ),
+                                            ),
+
                                           ],
-
                                         ),
-
-
+                                        SizedBox(width: 10,),
                                       ],
                                     ),
                                   ),
                                 ],
-
                               ),
                             )
                         ),
@@ -205,8 +212,8 @@ class _SlidesScreenState extends State<SlidesScreen> {
                   child: LiquidLinearProgressIndicator(
                     value: _progress,
                     direction: Axis.horizontal,
-                    valueColor: AlwaysStoppedAnimation(Colors.black),
-                    center: Text('${_progress*100}%', style: TextStyle(color: Colors.red),),
+                    valueColor: AlwaysStoppedAnimation(Colors.blueAccent),
+                    center: Text('${_progress*100}%', style: TextStyle(color: Colors.black),),
                   ),
                 )
             )
